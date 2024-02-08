@@ -12,6 +12,10 @@ fun DependencyHandler.addDataModule() {
     add("implementation", project(ModulesDep.data))
 }
 
+fun DependencyHandler.addAppModule() {
+    add("implementation", project(ModulesDep.app))
+}
+
 fun DependencyHandler.addDomainModule() {
     add("implementation", project(ModulesDep.domain))
 }

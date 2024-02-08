@@ -1,5 +1,7 @@
 import dependencies.dependency.addCoroutinesDependencies
+import dependencies.dependency.addDataStoreDependencies
 import dependencies.dependency.addKoinDependencies
+import dependencies.dependency.addMoshi
 import dependencies.dependency.addNetworkDependencies
 import dependencies.dependency.addRoomDependencies
 import dependencies.module.addCommonModule
@@ -44,8 +46,10 @@ dependencies {
     addModelModule()
     addCommonModule()
 
+    addDataStoreDependencies(configurationName = "api")
     addKoinDependencies()
     addNetworkDependencies()
     addRoomDependencies()
     addCoroutinesDependencies()
+    addMoshi()
 }

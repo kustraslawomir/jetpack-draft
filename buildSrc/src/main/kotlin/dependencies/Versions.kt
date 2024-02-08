@@ -21,4 +21,5 @@ object Versions {
     const val espressoCoreVersion = "3.5.0"
     const val jUnitExtVersion = "1.1.4"
     const val roomVersion = "2.6.1"
+    const val dataStoreVersion = "1.0.0"
 }

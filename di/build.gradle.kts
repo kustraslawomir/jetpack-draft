@@ -2,7 +2,9 @@ import dependencies.dependency.addCoroutinesDependencies
 import dependencies.dependency.addKoinDependencies
 import dependencies.dependency.addNetworkDependencies
 import dependencies.dependency.addRoomDependencies
+import dependencies.module.addAppModule
 import dependencies.module.addCommonModule
+import dependencies.module.addDataModule
 import dependencies.module.addDomainModule
 import dependencies.module.addModelModule
 
@@ -42,6 +44,7 @@ android {
 
 dependencies {
 
+    addDataModule()
     addDomainModule()
     addModelModule()
     addCommonModule()

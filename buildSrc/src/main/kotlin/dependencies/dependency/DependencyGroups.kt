@@ -27,8 +27,10 @@ val androidxLifeCycleDependencies = listOf(
 
 val koinDependencies = listOf(
     DependenciesConst.koinCore,
-    DependenciesConst.koinKtor,
-    DependenciesConst.koinLoggerSlf4j
+    DependenciesConst.koinAndroid,
+    DependenciesConst.koinWorkManager,
+    DependenciesConst.koinNavigation,
+    DependenciesConst.koinCompose
 )
 
 val networkDependencies = listOf(
@@ -36,13 +38,3 @@ val networkDependencies = listOf(
     DependenciesConst.okhHttp3,
     DependenciesConst.okhHttp3Interceptor
 )
-
-val coroutinesDependencies = listOf(
-    DependenciesConst.kotlinCoroutines,
-)
-
-val coilImageLoadingDependencies = listOf(
-    DependenciesConst.coil,
-)
-
-

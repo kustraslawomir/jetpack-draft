@@ -10,7 +10,7 @@ fun DependencyHandler.addMaterialDependencies() {
 }
 
 fun DependencyHandler.addComposeDependencies() {
-    androidMaterialDependencies.forEach {
+    androidComposeDependencies.forEach {
         add("implementation", it)
     }
 }
@@ -35,15 +35,11 @@ fun DependencyHandler.addNetworkDependencies(configurationName: String = "implem
 }
 
 fun DependencyHandler.addCoroutinesDependencies() {
-    coroutinesDependencies.forEach {
-        add("implementation", it)
-    }
+    add("implementation", DependenciesConst.kotlinCoroutines)
 }
 
 fun DependencyHandler.addCoilImageLoadingDependencies() {
-    coilImageLoadingDependencies.forEach {
-        add("implementation", it)
-    }
+    add("implementation", DependenciesConst.coil)
 }
 
 fun DependencyHandler.addLeakcanaryDependencies() {
@@ -68,6 +64,10 @@ fun DependencyHandler.addTimberDependencies(configurationName: String = "impleme
 
 fun DependencyHandler.addMoshi(configurationName: String = "implementation") {
     add(configurationName, DependenciesConst.moshi)
+}
+
+fun DependencyHandler.addDataStoreDependencies(configurationName: String = "implementation") {
+    add(configurationName, DependenciesConst.dataStore)
 }
 
 fun DependencyHandler.addAndroidTestsDependencies() {

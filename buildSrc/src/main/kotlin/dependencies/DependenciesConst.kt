@@ -22,6 +22,10 @@ object DependenciesConst {
     const val lifecycleService = "androidx.lifecycle:lifecycle-service:${Versions.lifecycleVersion}"
 
     val koinCore = "io.insert-koin:koin-core:${Versions.koinVersion}"
+    val koinAndroid = "io.insert-koin:koin-android:${Versions.koinVersion}"
+    val koinWorkManager = "io.insert-koin:koin-androidx-workmanager:${Versions.koinVersion}"
+    val koinNavigation = "io.insert-koin:koin-androidx-navigation:${Versions.koinVersion}"
+    val koinCompose = "io.insert-koin:koin-androidx-compose:${Versions.koinVersion}"
     val koinKtor = "io.insert-koin:koin-ktor:${Versions.koinVersion}"
     val koinLoggerSlf4j = "io.insert-koin:koin-logger-slf4j:${Versions.koinVersion}"
 
@@ -60,6 +64,6 @@ object DependenciesConst {
         "androidx.navigation:navigation-compose:${Versions.navigationComposeVersion}"
 
     val navigationSafeArgsPlugin = "androidx.navigation:navigation-safe-args-gradle-plugin:${Versions.navigationComposeVersion}"
-
+    const val dataStore = "androidx.datastore:datastore-preferences:${Versions.dataStoreVersion}"
 
 }

@@ -8,18 +8,22 @@ import android.view.ViewGroup
 import android.widget.CompoundButton
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import com.google.android.material.color.DynamicColors
+import kotlinx.coroutines.launch
+import org.koin.android.ext.android.inject
+import skustra.dark.common.theme.ApplicationColorTheme
+import skustra.dark.domain.usecase.theme.ThemeRepository
 import skustra.draft.databinding.FragmentCustomThemeBinding
 
 class CustomThemeFragment : Fragment() {
 
-    private val themesStorage: ThemesStorage by lazy {
-        ThemesStorage(requireContext())
-    }
 
     private val binding: FragmentCustomThemeBinding by lazy {
         FragmentCustomThemeBinding.inflate(layoutInflater)
     }
+
+    private val themeRepository: ThemeRepository by inject()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -27,23 +31,18 @@ class CustomThemeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setColorThemeToggles()
         observeColorThemeSelection()
-        setThemeModeToggles()
         observeThemeModeSelection()
+        setColorThemeToggles()
+        setThemeModeToggles()
     }
 
-    private fun setColorThemeToggles() {
-        val currentTheme = requireNotNull(ColorThemesController.colorTheme)
-        val defaultThemeSelected = currentTheme == ColorTheme.DEFAULT
-        val dynamicThemeSelected = currentTheme == ColorTheme.DYNAMIC
-        val orangeThemeSelected = currentTheme == ColorTheme.ORANGE
-
-        binding.apply {
-            optionDefaultTheme.isChecked = defaultThemeSelected
-            optionDynamicTheme.isChecked = dynamicThemeSelected
-            optionOrangeTheme.isChecked = orangeThemeSelected
-            optionDynamicTheme.isVisible = DynamicColors.isDynamicColorAvailable()
+    private fun observeThemeModeSelection() {
+        binding.optionNight.setOnCheckedChangeListener { _, isChecked ->
+            lifecycleScope.launch {
+                ApplicationThemeController.switchToDarkMode(enableDarkMode = isChecked)
+                themeRepository.setDarkModeApplied(isChecked)
+            }
         }
     }
 
@@ -51,9 +50,9 @@ class CustomThemeFragment : Fragment() {
         val onCheckedChanged = CompoundButton.OnCheckedChangeListener { view, isChecked ->
             if (!isChecked) return@OnCheckedChangeListener
             when (view) {
-                binding.optionDefaultTheme -> setColorTheme(ColorTheme.DEFAULT)
-                binding.optionDynamicTheme -> setColorTheme(ColorTheme.DYNAMIC)
-                binding.optionOrangeTheme -> setColorTheme(ColorTheme.ORANGE)
+                binding.optionDefaultTheme -> setColorTheme(ApplicationColorTheme.Default)
+                binding.optionDynamicTheme -> setColorTheme(ApplicationColorTheme.Dynamic)
+                binding.optionOrangeTheme -> setColorTheme(ApplicationColorTheme.Orange)
             }
         }
 
@@ -64,10 +63,26 @@ class CustomThemeFragment : Fragment() {
         }
     }
 
-    private fun setColorTheme(colorTheme: ColorTheme) {
-        if (ColorThemesController.colorTheme == colorTheme) return
-        themesStorage.setColorTheme(colorTheme)
-        ColorThemesController.applyColorTheme(colorTheme)
+    private fun setColorTheme(colorTheme: ApplicationColorTheme) {
+        lifecycleScope.launch {
+            if (ApplicationThemeController.colorTheme == colorTheme) return@launch
+            themeRepository.setColorTheme(colorTheme)
+            ApplicationThemeController.applyColorTheme(colorTheme)
+        }
+    }
+
+    private fun setColorThemeToggles() {
+        val currentTheme = requireNotNull(ApplicationThemeController.colorTheme)
+        val defaultThemeSelected = currentTheme == ApplicationColorTheme.Default
+        val dynamicThemeSelected = currentTheme == ApplicationColorTheme.Dynamic
+        val orangeThemeSelected = currentTheme == ApplicationColorTheme.Orange
+
+        binding.apply {
+            optionDefaultTheme.isChecked = defaultThemeSelected
+            optionDynamicTheme.isChecked = dynamicThemeSelected
+            optionOrangeTheme.isChecked = orangeThemeSelected
+            optionDynamicTheme.isVisible = DynamicColors.isDynamicColorAvailable()
+        }
     }
 
     private fun setThemeModeToggles() {
@@ -79,13 +94,6 @@ class CustomThemeFragment : Fragment() {
         } else {
             binding.optionDay.isChecked = true
             binding.optionNight.isChecked = false
-        }
-    }
-
-    private fun observeThemeModeSelection() {
-        binding.optionNight.setOnCheckedChangeListener { _, isChecked ->
-            ApplicationTheme.toggleDarkTheme(isChecked)
-            themesStorage.setDarkModeApplied(isChecked)
         }
     }
 }

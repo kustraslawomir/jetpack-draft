@@ -1,6 +1,8 @@
 import dependencies.dependency.addCoroutinesDependencies
 import dependencies.dependency.addKoinDependencies
 import dependencies.module.addCommonModule
+import dependencies.module.addDataModule
+import dependencies.module.addDiModule
 import dependencies.module.addDomainModule
 import dependencies.module.addModelModule
 
@@ -40,10 +42,9 @@ android {
 
 dependencies {
 
+    addDataModule()
     addModelModule()
     addCommonModule()
 
     addCoroutinesDependencies()
-    addKoinDependencies()
-
 }
