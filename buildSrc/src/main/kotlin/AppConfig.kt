@@ -4,7 +4,7 @@ object AppConfig {
     const val minSdkVersion = 28
     const val compileSdkVersion = 34
     const val targetSdkVersion = 34
-    const val kotlinCompilerExtensionVersion = "1.4.2"
+    const val kotlinCompilerExtensionVersion = "1.5.8"
     const val versionCode  = 1
     const val versionName  = "1.0.0"
 }

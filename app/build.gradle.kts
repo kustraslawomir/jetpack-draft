@@ -1,16 +1,13 @@
 import dependencies.dependency.addAndroLifeCycleDependencies
-import dependencies.dependency.addAndroidComposeDependencies
+import dependencies.dependency.addMaterialDependencies
 import dependencies.dependency.addAndroidTestsDependencies
-import dependencies.dependency.addCoroutinesAndroidDependencies
+import dependencies.dependency.addCoilImageLoadingDependencies
+import dependencies.dependency.addComposeDependencies
+import dependencies.dependency.addCoroutinesDependencies
 import dependencies.dependency.addKoinDependencies
 import dependencies.dependency.addLeakcanaryDependencies
-import dependencies.dependency.addMoshi
 import dependencies.dependency.addNavigationDependencies
-import dependencies.dependency.addNetworkDependencies
-import dependencies.dependency.addRoomDependencies
-import dependencies.dependency.addTimberDependencies
 import dependencies.module.addCommonModule
-import dependencies.module.addDataModule
 import dependencies.module.addDiModule
 import dependencies.module.addDomainModule
 import dependencies.module.addModelModule
@@ -79,23 +76,20 @@ android {
 }
 
 dependencies {
-    addDataModule()
+
     addDomainModule()
+    addModelModule()
     addDiModule()
     addCommonModule()
-    addModelModule()
 
+    addMaterialDependencies()
+    addComposeDependencies()
     addAndroLifeCycleDependencies()
     addNavigationDependencies()
-
-    addCoroutinesAndroidDependencies()
+    addCoilImageLoadingDependencies()
     addKoinDependencies()
-
-    addNetworkDependencies()
-    addMoshi()
-    addRoomDependencies()
+    addCoroutinesDependencies()
 
     addLeakcanaryDependencies()
-    addTimberDependencies()
     addAndroidTestsDependencies()
 }

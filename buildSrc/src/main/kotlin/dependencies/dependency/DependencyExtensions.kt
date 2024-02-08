@@ -3,8 +3,14 @@ package dependencies.dependency
 import dependencies.DependenciesConst
 import org.gradle.api.artifacts.dsl.DependencyHandler
 
-fun DependencyHandler.addAndroidComposeDependencies() {
-    androidComposeDependencies.forEach {
+fun DependencyHandler.addMaterialDependencies() {
+    androidMaterialDependencies.forEach {
+        add("implementation", it)
+    }
+}
+
+fun DependencyHandler.addComposeDependencies() {
+    androidMaterialDependencies.forEach {
         add("implementation", it)
     }
 }
@@ -28,8 +34,8 @@ fun DependencyHandler.addNetworkDependencies(configurationName: String = "implem
     }
 }
 
-fun DependencyHandler.addCoroutinesAndroidDependencies() {
-    coroutinesAndroidDependencies.forEach {
+fun DependencyHandler.addCoroutinesDependencies() {
+    coroutinesDependencies.forEach {
         add("implementation", it)
     }
 }

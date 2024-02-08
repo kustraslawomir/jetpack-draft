@@ -2,6 +2,7 @@ package dependencies
 
 object DependenciesConst {
     const val coreKtx = "androidx.core:core-ktx:${Versions.coreKtxVersion}"
+    const val material = "com.google.android.material:material:${Versions.materialVersion}"
     const val compose3Material = "androidx.compose.material3:material3:${Versions.material3Version}"
     const val compose3WindowSize = "androidx.compose.material3:material3-window-size-class:${Versions.material3Version}"
     const val compose3Adaptive = "androidx.compose.material3:material3-adaptive:${Versions.material3AdaptiveVersion}"

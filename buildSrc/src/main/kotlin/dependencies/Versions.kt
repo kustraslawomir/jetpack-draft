@@ -5,6 +5,7 @@ object Versions {
     val navigationComposeVersion: String = System.getProperty("navigationComposeVersion")
     const val composeVersion = "1.6.0"
     const val coreKtxVersion = "1.12.0"
+    const val materialVersion = "1.5.0"
     const val material3Version = "1.1.2"
     const val material3AdaptiveVersion = "1.0.0-alpha05"
     const val material3AdaptiveNavigationSuiteVersion = "1.0.0-alpha02"

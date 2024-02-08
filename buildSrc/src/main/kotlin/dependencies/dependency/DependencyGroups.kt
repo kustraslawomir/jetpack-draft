@@ -2,6 +2,11 @@ package dependencies.dependency
 
 import dependencies.DependenciesConst
 
+val androidMaterialDependencies = listOf(
+    DependenciesConst.coreKtx,
+    DependenciesConst.material,
+)
+
 val androidComposeDependencies = listOf(
     DependenciesConst.coreKtx,
     DependenciesConst.compose3Material,
@@ -32,7 +37,7 @@ val networkDependencies = listOf(
     DependenciesConst.okhHttp3Interceptor
 )
 
-val coroutinesAndroidDependencies = listOf(
+val coroutinesDependencies = listOf(
     DependenciesConst.kotlinCoroutines,
 )
 
