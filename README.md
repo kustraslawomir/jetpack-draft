@@ -1,15 +1,19 @@
 # Project Draft Overview
 
+## BuildSrc Catalog
+
+The project modularizes its dependencies and configurations using the `buildSrc` catalog. This approach centralizes dependency management and configuration by defining dependencies, versions, and common build logic in Kotlin scripts within the `buildSrc` directory. This allows for easier maintenance, consistency, and reusability across modules.
+
 ## Architecture
 
 The project architecture is organized into the following components:
 
-- **Data**: Handling data operations such as fetching from and storing to various sources (room, datastore).
-- **Domain**: Core business logic (usecase) and models.
-- **Common**: Shared utilities and helper functions (logging).
-- **MVI Presentation**: Presentation layer following the Model-View-Intent pattern.
-- **Test**: Unit and integration tests.
-- **Offline-First Approach**: Design strategy prioritizing offline functionality.
+- **data**: Handling data operations such as fetching from and storing to various sources (room, datastore).
+- **domain**: Core business logic (usecase) and models.
+- **model**: Api response and entities.
+- **common**: Shared utilities and helper functions (logging).
+- **app**: Presentation layer following the Model-View-Intent pattern.
+- **test**: Unit and integration tests.
 
 ## Frameworks
 
