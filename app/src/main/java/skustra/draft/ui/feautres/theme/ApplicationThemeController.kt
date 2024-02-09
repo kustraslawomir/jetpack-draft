@@ -7,7 +7,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.app.ActivityCompat
 import com.google.android.material.color.DynamicColors
-import skustra.dark.common.theme.ApplicationColorTheme
+import skustra.dark.domain.usecase.theme.ApplicationColorTheme
 import skustra.draft.R
 import java.util.*
 

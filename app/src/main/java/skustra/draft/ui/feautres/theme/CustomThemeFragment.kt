@@ -12,8 +12,8 @@ import androidx.lifecycle.lifecycleScope
 import com.google.android.material.color.DynamicColors
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
-import skustra.dark.common.theme.ApplicationColorTheme
-import skustra.dark.domain.usecase.theme.ThemeRepository
+import skustra.dark.domain.usecase.theme.ApplicationColorTheme
+import skustra.dark.domain.usecase.theme.ThemePreferences
 import skustra.draft.databinding.FragmentCustomThemeBinding
 
 class CustomThemeFragment : Fragment() {
@@ -23,7 +23,7 @@ class CustomThemeFragment : Fragment() {
         FragmentCustomThemeBinding.inflate(layoutInflater)
     }
 
-    private val themeRepository: ThemeRepository by inject()
+    private val themePreferences: ThemePreferences by inject()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -41,7 +41,7 @@ class CustomThemeFragment : Fragment() {
         binding.optionNight.setOnCheckedChangeListener { _, isChecked ->
             lifecycleScope.launch {
                 ApplicationThemeController.switchToDarkMode(enableDarkMode = isChecked)
-                themeRepository.setDarkModeApplied(isChecked)
+                themePreferences.setDarkModeApplied(isChecked)
             }
         }
     }
@@ -66,7 +66,7 @@ class CustomThemeFragment : Fragment() {
     private fun setColorTheme(colorTheme: ApplicationColorTheme) {
         lifecycleScope.launch {
             if (ApplicationThemeController.colorTheme == colorTheme) return@launch
-            themeRepository.setColorTheme(colorTheme)
+            themePreferences.setColorTheme(colorTheme)
             ApplicationThemeController.applyColorTheme(colorTheme)
         }
     }

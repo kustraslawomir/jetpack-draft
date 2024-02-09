@@ -1,4 +1,4 @@
-package skustra.dark.common.theme
+package skustra.dark.domain.usecase.theme
 
 sealed class ApplicationColorTheme {
     data object Default : ApplicationColorTheme()

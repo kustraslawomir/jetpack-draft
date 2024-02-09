@@ -10,12 +10,12 @@ import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
 import skustra.dark.di.appModule
-import skustra.dark.domain.usecase.theme.ThemeRepository
+import skustra.dark.domain.usecase.theme.ThemePreferences
 import skustra.draft.ui.feautres.theme.ApplicationThemeController
 
 class DraftApplication : Application() {
 
-    private val themeRepository: ThemeRepository by inject()
+    private val themePreferences: ThemePreferences by inject()
 
     override fun onCreate() {
         super.onCreate()
@@ -34,7 +34,7 @@ class DraftApplication : Application() {
     }
 
     private suspend fun setDayNightMode() {
-        val themeMode = when (themeRepository.isDarkModeApplied()) {
+        val themeMode = when (themePreferences.isDarkModeApplied()) {
             null -> AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM
             true -> AppCompatDelegate.MODE_NIGHT_YES
             false -> AppCompatDelegate.MODE_NIGHT_NO
@@ -43,7 +43,7 @@ class DraftApplication : Application() {
     }
 
     private suspend fun setColorTheme() {
-        val colorTheme = themeRepository.getColorTheme()
+        val colorTheme = themePreferences.getColorTheme()
         ApplicationThemeController.applyColorTheme(colorTheme)
     }
 }
