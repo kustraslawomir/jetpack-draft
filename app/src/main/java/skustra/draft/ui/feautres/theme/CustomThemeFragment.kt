@@ -12,7 +12,7 @@ import androidx.lifecycle.lifecycleScope
 import com.google.android.material.color.DynamicColors
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
-import skustra.dark.domain.usecase.theme.ApplicationColorTheme
+import skustra.dark.domain.usecase.theme.ThemeColorScheme
 import skustra.dark.domain.usecase.theme.ThemePreferences
 import skustra.draft.databinding.FragmentCustomThemeBinding
 
@@ -50,9 +50,9 @@ class CustomThemeFragment : Fragment() {
         val onCheckedChanged = CompoundButton.OnCheckedChangeListener { view, isChecked ->
             if (!isChecked) return@OnCheckedChangeListener
             when (view) {
-                binding.optionDefaultTheme -> setColorTheme(ApplicationColorTheme.Default)
-                binding.optionDynamicTheme -> setColorTheme(ApplicationColorTheme.Dynamic)
-                binding.optionOrangeTheme -> setColorTheme(ApplicationColorTheme.Orange)
+                binding.optionDefaultTheme -> setColorTheme(ThemeColorScheme.Default)
+                binding.optionDynamicTheme -> setColorTheme(ThemeColorScheme.Dynamic)
+                binding.optionOrangeTheme -> setColorTheme(ThemeColorScheme.Orange)
             }
         }
 
@@ -63,7 +63,7 @@ class CustomThemeFragment : Fragment() {
         }
     }
 
-    private fun setColorTheme(colorTheme: ApplicationColorTheme) {
+    private fun setColorTheme(colorTheme: ThemeColorScheme) {
         lifecycleScope.launch {
             if (ApplicationThemeController.colorTheme == colorTheme) return@launch
             themePreferences.setColorTheme(colorTheme)
@@ -73,9 +73,9 @@ class CustomThemeFragment : Fragment() {
 
     private fun setColorThemeToggles() {
         val currentTheme = requireNotNull(ApplicationThemeController.colorTheme)
-        val defaultThemeSelected = currentTheme == ApplicationColorTheme.Default
-        val dynamicThemeSelected = currentTheme == ApplicationColorTheme.Dynamic
-        val orangeThemeSelected = currentTheme == ApplicationColorTheme.Orange
+        val defaultThemeSelected = currentTheme == ThemeColorScheme.Default
+        val dynamicThemeSelected = currentTheme == ThemeColorScheme.Dynamic
+        val orangeThemeSelected = currentTheme == ThemeColorScheme.Orange
 
         binding.apply {
             optionDefaultTheme.isChecked = defaultThemeSelected

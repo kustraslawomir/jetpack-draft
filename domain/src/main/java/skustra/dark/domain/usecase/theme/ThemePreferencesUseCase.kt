@@ -10,24 +10,24 @@ class ThemePreferencesUseCase(private val storage: ThemePreferencesStorage) : Th
 
     override suspend fun isDarkModeApplied() = storage.isDarkModeApplied()
 
-    override suspend fun setColorTheme(value: ApplicationColorTheme) {
+    override suspend fun setColorTheme(value: ThemeColorScheme) {
         storage.setColorTheme(value.storageKey())
     }
 
-    override suspend fun getColorTheme(): ApplicationColorTheme {
-        return storage.getColorTheme()?.toColorTheme() ?: ApplicationColorTheme.Default
+    override suspend fun getColorTheme(): ThemeColorScheme {
+        return storage.getColorTheme()?.toColorTheme() ?: ThemeColorScheme.Default
     }
 
-    private fun ApplicationColorTheme.storageKey() = when (this) {
-        ApplicationColorTheme.Default -> ThemeValue.VALUE_COLOR_THEME_DEFAULT
-        ApplicationColorTheme.Dynamic -> ThemeValue.VALUE_COLOR_THEME_DYNAMIC
-        ApplicationColorTheme.Orange -> ThemeValue.VALUE_COLOR_THEME_ORANGE
+    private fun ThemeColorScheme.storageKey() = when (this) {
+        ThemeColorScheme.Default -> ThemeValue.VALUE_COLOR_THEME_DEFAULT
+        ThemeColorScheme.Dynamic -> ThemeValue.VALUE_COLOR_THEME_DYNAMIC
+        ThemeColorScheme.Orange -> ThemeValue.VALUE_COLOR_THEME_ORANGE
     }
 
     private fun String.toColorTheme() = when (this) {
-        ThemeValue.VALUE_COLOR_THEME_DEFAULT -> ApplicationColorTheme.Default
-        ThemeValue.VALUE_COLOR_THEME_DYNAMIC -> ApplicationColorTheme.Dynamic
-        ThemeValue.VALUE_COLOR_THEME_ORANGE -> ApplicationColorTheme.Orange
+        ThemeValue.VALUE_COLOR_THEME_DEFAULT -> ThemeColorScheme.Default
+        ThemeValue.VALUE_COLOR_THEME_DYNAMIC -> ThemeColorScheme.Dynamic
+        ThemeValue.VALUE_COLOR_THEME_ORANGE -> ThemeColorScheme.Orange
         else -> throw IllegalArgumentException("Unknown key: $this")
     }
 

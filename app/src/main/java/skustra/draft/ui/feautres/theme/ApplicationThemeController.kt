@@ -7,7 +7,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.app.ActivityCompat
 import com.google.android.material.color.DynamicColors
-import skustra.dark.domain.usecase.theme.ApplicationColorTheme
+import skustra.dark.domain.usecase.theme.ThemeColorScheme
 import skustra.draft.R
 import java.util.*
 
@@ -16,7 +16,7 @@ object ApplicationThemeController {
     private val activities = Collections.newSetFromMap(WeakHashMap<Activity, Boolean>())
     private var initialized = false
 
-    var colorTheme: ApplicationColorTheme = ApplicationColorTheme.Default
+    var colorTheme: ThemeColorScheme = ThemeColorScheme.Default
 
     fun initialize(application: Application) {
         if (!initialized) {
@@ -25,7 +25,7 @@ object ApplicationThemeController {
         }
     }
 
-    fun applyColorTheme(colorTheme: ApplicationColorTheme) {
+    fun applyColorTheme(colorTheme: ThemeColorScheme) {
         this.colorTheme = colorTheme
         activities.forEach(ActivityCompat::recreate)
     }
@@ -41,8 +41,8 @@ object ApplicationThemeController {
     private class ActivityCallbacks : ActivityLifecycleCallbacks {
         override fun onActivityCreated(activity: Activity, savedInstanceState: Bundle?) {
             when (colorTheme) {
-                ApplicationColorTheme.Dynamic -> DynamicColors.applyIfAvailable(activity)
-                ApplicationColorTheme.Orange -> {
+                ThemeColorScheme.Dynamic -> DynamicColors.applyIfAvailable(activity)
+                ThemeColorScheme.Orange -> {
                     activity.theme.applyStyle(R.style.ColorThemeOverlay_Orange, true)
                 }
 

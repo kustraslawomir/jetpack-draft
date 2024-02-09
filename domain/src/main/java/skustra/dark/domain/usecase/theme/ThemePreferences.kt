@@ -6,7 +6,7 @@ interface ThemePreferences {
 
     suspend fun isDarkModeApplied(): Boolean?
 
-    suspend fun getColorTheme(): ApplicationColorTheme
+    suspend fun getColorTheme(): ThemeColorScheme
 
-    suspend fun setColorTheme(value: ApplicationColorTheme)
+    suspend fun setColorTheme(value: ThemeColorScheme)
 }
