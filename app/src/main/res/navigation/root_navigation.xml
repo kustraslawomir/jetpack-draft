@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/navigation"
+    app:startDestination="@+id/splashFragment">
+
+    <action
+        android:id="@+id/splash_to_onboarding"
+        app:destination="@+id/onBoardingFragment"
+        app:popUpTo="@id/navigation"
+        app:popUpToInclusive="true"/>
+
+    <action
+        android:id="@+id/splash_to_auth"
+        app:destination="@+id/auth_navigation"
+        app:popUpTo="@id/navigation"
+        app:popUpToInclusive="true"/>
+
+    <action
+        android:id="@+id/splash_to_dashboard"
+        app:destination="@+id/dashboard_navigation"
+        app:popUpTo="@id/navigation"
+        app:popUpToInclusive="true"/>
+
+    <action
+        android:id="@+id/onboarding_to_auth"
+        app:destination="@+id/auth_navigation"
+        app:popUpTo="@id/navigation"
+        app:popUpToInclusive="true"/>
+
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="skustra.ui.fragments.splash.SplashFragment" />
+
+    <fragment
+        android:id="@+id/onBoardingFragment"
+        android:name="skustra.ui.fragments.onboarding.OnBoardingFragment" />
+
+    <include app:graph="@navigation/auth_navigation" />
+
+    <include app:graph="@navigation/dashboard_navigation" />
+
+</navigation>

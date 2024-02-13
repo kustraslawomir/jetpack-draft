@@ -1,4 +1,4 @@
-package skustra.draft.ui.feautres.theme
+package skustra.ui.fragments.theme
 
 import android.app.Activity
 import android.app.Application
@@ -26,7 +26,7 @@ object ApplicationThemeController {
     }
 
     fun applyColorTheme(colorTheme: ThemeColorScheme) {
-        this.colorTheme = colorTheme
+        ApplicationThemeController.colorTheme = colorTheme
         activities.forEach(ActivityCompat::recreate)
     }
 

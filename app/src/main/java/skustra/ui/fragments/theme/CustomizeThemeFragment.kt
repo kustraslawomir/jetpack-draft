@@ -1,4 +1,4 @@
-package skustra.draft.ui.feautres.theme
+package skustra.ui.fragments.theme
 
 import android.content.res.Configuration
 import android.os.Bundle
@@ -16,7 +16,7 @@ import skustra.dark.domain.usecase.theme.ThemeColorScheme
 import skustra.dark.domain.usecase.theme.ThemePreferences
 import skustra.draft.databinding.FragmentCustomThemeBinding
 
-class CustomThemeFragment : Fragment() {
+class CustomizeThemeFragment : Fragment() {
 
 
     private val binding: FragmentCustomThemeBinding by lazy {

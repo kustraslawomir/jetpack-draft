@@ -63,7 +63,6 @@ object DependenciesConst {
     val navigationCompose =
         "androidx.navigation:navigation-compose:${Versions.navigationComposeVersion}"
 
-    val navigationSafeArgsPlugin = "androidx.navigation:navigation-safe-args-gradle-plugin:${Versions.navigationComposeVersion}"
     const val dataStore = "androidx.datastore:datastore-preferences:${Versions.dataStoreVersion}"
 
 }

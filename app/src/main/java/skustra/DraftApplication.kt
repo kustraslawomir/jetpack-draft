@@ -11,7 +11,7 @@ import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
 import skustra.dark.di.appModule
 import skustra.dark.domain.usecase.theme.ThemePreferences
-import skustra.draft.ui.feautres.theme.ApplicationThemeController
+import skustra.ui.fragments.theme.ApplicationThemeController
 
 class DraftApplication : Application() {
 
