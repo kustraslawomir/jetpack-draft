@@ -2,14 +2,14 @@
 
 ## BuildSrc Catalog
 
-The project modularizes its dependencies and configurations using the `buildSrc` catalog. This approach centralizes dependency management and configuration by defining dependencies, versions, and common build logic in Kotlin scripts within the `buildSrc` directory. This allows for easier maintenance, consistency, and reusability across modules.
+The project modularize its dependencies and configurations using the `buildSrc` catalog. This approach centralizes dependency management and configuration by defining dependencies, versions, and common build logic in Kotlin scripts within the `buildSrc` directory. This allows for easier maintenance, consistency, and usability across modules.
 
 ## Architecture
 
 The project architecture is organized into the following components:
 
 - **data**: Handling data operations such as fetching from and storing to various sources (room, datastore).
-- **domain**: Core business logic (usecase) and models.
+- **domain**: Core business logic (use case) and models.
 - **model**: Api response and entities.
 - **common**: Shared utilities and helper functions (logging).
 - **app**: Presentation layer following the Model-View-Intent pattern.
